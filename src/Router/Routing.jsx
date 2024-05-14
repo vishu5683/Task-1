@@ -1,18 +1,17 @@
-import React from 'react'
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import LoginUi from '../components/LoginUi';
-import ForgotPassword1 from "../components/Fp"
-
+import ForgotPassword from "../pages/Fp";
 
 const Routing = () => {
   return (
     <Router>
-    <Switch>
-      <Route path="/" component={ForgotPassword1} />
-      <Route path="/" component={LoginUi} />
-    </Switch>
-  </Router>
-  )
+      <Switch>
+        <Route exact path="/" component={LoginUi} />
+        <Route path="/fpp" component={ForgotPassword} />
+      </Switch>
+    </Router>
+  );
 }
 
-export default Routing
+export default Routing;

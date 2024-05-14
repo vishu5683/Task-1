@@ -68,7 +68,7 @@ const LoginUi = () => {
           </div>
         </div>
         <div className="mb-3 forgot-password">
-          <Link to="/">Forgot Password?</Link>
+          <Link to="/fpp">Forgot Password</Link>
         </div>
         <button type="submit" className="btn btn-primary login-button">
           Login
