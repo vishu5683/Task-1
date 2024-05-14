@@ -1,0 +1,63 @@
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    gap: 50px;
+  }
+  
+  .login-image {
+    width: 35%;
+    height: 85%;
+  }
+  
+  .login-form {
+    width: 40%;
+  }
+  
+  .form-control {
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  .login-button {
+    width: 88%;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+  }
+  
+  .form-control.box {
+    width: 89%; 
+    padding-right: 40px; 
+    height: 50px;
+    display: inline-block;
+  }
+  
+  .password-input-container {
+    position: relative;
+    width: 100%; 
+  }
+  
+  .password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 80px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #333; /* Make the icon black */
+  }
+  
+
+  .forgot-password {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  
+  .forgot-password a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .forgot-password a:hover {
+    text-decoration: underline;
+  }

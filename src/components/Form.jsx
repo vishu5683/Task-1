@@ -7,7 +7,7 @@ function LoginForm() {
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleLogin = () => {
-    if (username === 'vishu.sharma@techugo.in' && password === 'vishu123`0') {
+    if (username === 'vishu.sharma@techugo.com' && password === 'vishu123') {
       // Successful login
       alert('Login successful!');
     } else {
