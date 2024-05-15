@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import Pic1 from './assets/pic1.png';
 import './LogUi.css';
 
@@ -8,6 +8,7 @@ const LoginUi = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -26,6 +27,7 @@ const LoginUi = () => {
     // Perform validation
     if (email === 'vishu@gmail.com' && password === 'vishu123') {
       alert('Login successful!');
+      navigate('/dashboard');
     } else {
       alert('Invalid email or password. Please try again.');
     }
@@ -68,7 +70,9 @@ const LoginUi = () => {
           </div>
         </div>
         <div className="mb-3 forgot-password">
-          <Link to="/fpp">Forgot Password</Link>
+          <p onClick={() => navigate("/forgot-password")} >
+            Forgot Password
+          </p>
         </div>
         <button type="submit" className="btn btn-primary login-button">
           Login

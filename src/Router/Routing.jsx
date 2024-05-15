@@ -1,16 +1,18 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginUi from '../components/LoginUi';
-import ForgotPassword from "../pages/Fp";
+import ForgotPassword from "../pages/ForgotPassword";
+import Dashboard from '../components/Dashboard';
 
 const Routing = () => {
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/" component={LoginUi} />
-        <Route path="/fpp" component={ForgotPassword} />
-      </Switch>
-    </Router>
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<LoginUi />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/dashboard" element={<Dashboard/>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
