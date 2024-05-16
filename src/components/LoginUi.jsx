@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 import Pic1 from './assets/pic1.png';
 import './LogUi.css';
 
@@ -8,7 +8,7 @@ const LoginUi = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -26,10 +26,15 @@ const LoginUi = () => {
     e.preventDefault();
     // Perform validation
     if (email === 'vishu@gmail.com' && password === 'vishu123') {
-      alert('Login successful!');
+      // Save login details to LocalStorage
+      localStorage.setItem('isLoggedIn', true);
+      localStorage.setItem('userEmail', email);
+      // Redirect to dashboard
       navigate('/dashboard');
     } else {
       alert('Invalid email or password. Please try again.');
+      // setEmail('');
+      // setPassword('');
     }
   };
 
