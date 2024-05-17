@@ -1,15 +1,15 @@
 import React from 'react'
-import Layoutdesign from '../Layoutdesign'
+import Layoutdesign from '../../pages/Layout/Layoutdesign'
 
-const Player = () => {
+const View1 = () => {
   return (
-    <Layoutdesign> {/* Render within the Layout component */}
+    <Layoutdesign> 
     <div>
-      <h1>Team Management</h1>
+      <h1>Tffffffhment</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Team Management content goes here.</p>
     </div>
   </Layoutdesign>
   )
 }
 
-export default Player
+export default View1

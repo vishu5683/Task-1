@@ -1,9 +1,9 @@
 import React from 'react'
-import Layoutdesign from '../Layoutdesign'
+import Layoutdesign from '../../pages/Layout/Layoutdesign'
 
-const Team = () => {
+const Player = () => {
   return (
-    <Layoutdesign> 
+    <Layoutdesign> {/* Render within the Layout component */}
     <div>
       <h1>Team Management</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Team Management content goes here.</p>
@@ -12,4 +12,4 @@ const Team = () => {
   )
 }
 
-export default Team
+export default Player

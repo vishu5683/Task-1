@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginUi from '../components/LoginUi';
 import ForgotPassword from "../pages/ForgotPassword";
-import Dashboard from '../components/Dashboard';
+import Dashboard from '../pages/Dashboard';
 
 
 import GameManagement from '../components/sidebar-options/GameManagement';

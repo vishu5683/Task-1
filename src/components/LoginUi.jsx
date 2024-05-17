@@ -5,13 +5,13 @@ import Pic1 from './assets/pic1.png';
 import './LogUi.css';
 
 const LoginUi = () => {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);
   };
 
   const handlePasswordChange = (e) => {
@@ -24,18 +24,37 @@ const LoginUi = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Perform validation
-    if (email === 'vishu@gmail.com' && password === 'vishu123') {
-      // Save login details to LocalStorage
-      localStorage.setItem('isLoggedIn', true);
-      localStorage.setItem('userEmail', email);
-      // Redirect to dashboard
-      navigate('/dashboard');
-    } else {
-      alert('Invalid email or password. Please try again.');
-      // setEmail('');
-      // setPassword('');
-    }
+
+    fetch('https://dummyjson.com/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username: username,
+        password: password,
+        expiresInMins: 30,
+      })
+    })
+    .then(res => {
+      if (!res.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return res.json();
+    })
+    .then(data => {
+      if (data.token) { 
+        localStorage.setItem('isLoggedIn', true);
+        localStorage.setItem('username', username);
+        localStorage.setItem('token', data.token); // Save the token
+        // Redirect to dashboard
+        navigate('/dashboard');
+      } else {
+        alert('Invalid username or password. Please try again.');
+      }
+    })
+    .catch(error => {
+      alert('Invalid username or password. Please try again.');
+      console.error('Error:', error);
+    });
   };
 
   return (
@@ -43,17 +62,17 @@ const LoginUi = () => {
       <img src={Pic1} alt="Login" className="login-image" />
       <form className="login-form" onSubmit={handleSubmit}>
         <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">
-            Enter Your Email address
+          <label htmlFor="exampleInputUsername1" className="form-label">
+            Enter Your Username
           </label>
           <input
-            type="email"
+            type="text"
             className="form-control box"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-            placeholder="Ex: Vishu@gmail.com"
-            value={email}
-            onChange={handleEmailChange}
+            id="exampleInputUsername1"
+            aria-describedby="usernameHelp"
+            placeholder="Ex: kminchelle"
+            value={username}
+            onChange={handleUsernameChange}
           />
         </div>
         <div className="mb-3">
@@ -75,7 +94,7 @@ const LoginUi = () => {
           </div>
         </div>
         <div className="mb-3 forgot-password">
-          <p onClick={() => navigate("/forgot-password")} >
+          <p onClick={() => navigate("/forgot-password")}>
             Forgot Password
           </p>
         </div>

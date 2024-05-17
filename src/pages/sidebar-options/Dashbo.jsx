@@ -1,14 +1,14 @@
 import React from 'react'
-import Layoutdesign from '../Layoutdesign'
-const Gameup = () => {
+import Layoutdesign from '../../pages/Layout/Layoutdesign'
+const Dashbo = () => {
   return (
     <Layoutdesign> 
     <div>
-      <h1>Thhhhhhh</h1>
+      <h1>Teryyyyy</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Team Management content goes here.</p>
     </div>
   </Layoutdesign>
   )
 }
 
-export default Gameup
+export default Dashbo
