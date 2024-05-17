@@ -1,5 +1,5 @@
 import React from 'react'
-import Layoutdesign from '../../pages/Layout/Layoutdesign'
+import Layoutdesign from '../Layout/Layoutdesign'
 const Gameup = () => {
   return (
     <Layoutdesign> 

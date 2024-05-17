@@ -1,17 +1,18 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import LoginUi from '../components/LoginUi';
+
 import ForgotPassword from "../pages/ForgotPassword";
 import Dashboard from '../pages/Dashboard';
 
 
-import GameManagement from '../components/sidebar-options/GameManagement';
-import Gameup from '../components/sidebar-options/Gameup';
-import Player from '../components/sidebar-options/Player';
-import Team from '../components/sidebar-options/Team';
-import EventMangement from '../components/sidebar-options/EventMangement';
-import Dashbo from '../components/sidebar-options/Dashbo';
-import View1 from '../components/sidebar-options/View1';
+import GameManagement from '../pages/sidebar-options/GameManagement';
+import Gameup from '../pages/sidebar-options/Gameup';
+import Player from '../pages/sidebar-options/Player';
+import Team from '../pages/sidebar-options/Team';
+import EventMangement from '../pages/sidebar-options/EventMangement';
+import Dashbo from '../pages/sidebar-options/Dashbo';
+import View1 from '../pages/sidebar-options/View1';
+import LoginUi from '../pages/LoginUi';
 
 const Routing = () => {
   return (
