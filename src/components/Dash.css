@@ -8,20 +8,21 @@ body {
     justify-content: space-between; 
     align-items: center; 
     padding: 10px 20px; 
-    background-color: #f0f0f0; 
-    box-shadow: 0 2px 4px rgba(196, 218, 221, 0.637); 
+    background-color: #007bff; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
     height: 60px;
+    color: white;
 } 
 
 .logo { 
-    color: blue; 
+    color: white; 
     font-size: 28px; 
     font-weight: bold; 
 } 
 
 .icon { 
     font-size: 40px; 
-    color: #000; 
+    color: white; 
 }
 
 .container { 
@@ -30,7 +31,7 @@ body {
 
 .sidebar { 
     width: 200px; 
-    background-color: #f8f9fa; 
+    background-color: #343a40; 
     padding-top: 5px; 
     height: calc(100vh - 60px);
     position: fixed; 
@@ -48,19 +49,49 @@ body {
 .list-group-item { 
     display: block; 
     padding: 10px 15px; 
-    margin-bottom: -1px; 
-    background-color: #fff; 
-    border: 1px solid #ddd; 
-    color: #000; 
+    margin-bottom: 5px; 
+    border: none; 
+    color: white; 
     text-decoration: none; 
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
 } 
 
+.list-group-item:nth-child(1) {
+    background-color: #3128a7; /* Green */
+}
+
+.list-group-item:nth-child(2) {
+    background-color: #408691; /* Teal */
+}
+
+.list-group-item:nth-child(3) {
+    background-color: #9867c0; /* Yellow */
+}
+
+.list-group-item:nth-child(4) {
+    background-color: #412aa8; /* Red */
+}
+
+.list-group-item:nth-child(5) {
+    background-color: #6f42c1; /* Purple */
+}
+
+.list-group-item:nth-child(6) {
+    background-color: #7948b1; /* Orange */
+}
+
+.list-group-item:nth-child(7) {
+    background-color: #7091b4; /* Blue */
+}
+
 .list-group-item:hover, .list-group-item:focus { 
-    background-color: #f1f1f1; 
+    filter: brightness(85%);
+    color: #ffffff; 
 } 
 
 .list-group-item-action.active { 
-    color: #fff; 
+    color: white; 
     background-color: #007bff; 
     border-color: #007bff; 
 } 
@@ -76,21 +107,24 @@ body {
 .logout-button {
     margin: 10px;
     padding: 10px;
-    background-color: #d3d3d3;
-    border: 1px solid #ccc;
-    border-radius: 15px;
+    background-color: #dc3545;
+    border: none;
+    border-radius: 5px;
     text-align: center;
-    color: #000;
+    color: white;
     text-decoration: none;
+    transition: background-color 0.3s;
+    cursor: pointer;
 }
 
 .logout-button:hover {
-    background-color: #c0c0c0;
+    background-color: #c82333;
 }
 
 .content { 
     margin-left: 200px; 
     padding: 20px; 
     flex-grow: 1; 
-    margin-top: 60px; 
+    background-color: #f8f9fa;
+    min-height: calc(100vh - 60px);
 }
