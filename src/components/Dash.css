@@ -58,31 +58,31 @@ body {
 } 
 
 .list-group-item:nth-child(1) {
-    background-color: #3128a7; /* Green */
+    background-color: #709eb4; /* Green */
 }
 
 .list-group-item:nth-child(2) {
-    background-color: #408691; /* Teal */
+    background-color: #709eb4; /* Teal */
 }
 
 .list-group-item:nth-child(3) {
-    background-color: #9867c0; /* Yellow */
+    background-color: #709eb4; /* Yellow */
 }
 
 .list-group-item:nth-child(4) {
-    background-color: #412aa8; /* Red */
+    background-color: #709eb4; /* Red */
 }
 
 .list-group-item:nth-child(5) {
-    background-color: #6f42c1; /* Purple */
+    background-color: #709eb4; /* Purple */
 }
 
 .list-group-item:nth-child(6) {
-    background-color: #7948b1; /* Orange */
+    background-color: #709eb4; /* Orange */
 }
 
 .list-group-item:nth-child(7) {
-    background-color: #7091b4; /* Blue */
+    background-color: #709eb4; /* Blue */
 }
 
 .list-group-item:hover, .list-group-item:focus { 
@@ -128,3 +128,12 @@ body {
     background-color: #f8f9fa;
     min-height: calc(100vh - 60px);
 }
+.list-group-item.active {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .list-group-item.active {
+    background-color: #007bff; 
+    color: white; 
+  }

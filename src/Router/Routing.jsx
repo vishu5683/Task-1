@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import ForgotPassword from "../pages/ForgotPassword";
 import Dashboard from '../pages/Dashboard';
-import GameManagement from '../pages/sidebar-options/GameManagement';
+import Products from '../pages/sidebar-options/Products';
 import Gameup from '../pages/sidebar-options/Gameup';
 import Player from '../pages/sidebar-options/Player';
 import Team from '../pages/sidebar-options/Team';
@@ -21,7 +21,7 @@ const Routing = () => {
         <Route path="/" element={<PublicRoutes><LoginUi /></PublicRoutes>} />
         <Route path="/forgot-password" element={<PublicRoutes><ForgotPassword /></PublicRoutes>} />
         <Route path="/dashboard" element={<PrivateRoutes><Dashboard /></PrivateRoutes>} />
-        <Route path="/game-management" element={<PrivateRoutes><GameManagement /></PrivateRoutes>} />
+        <Route path="/products" element={<PrivateRoutes><Products /></PrivateRoutes>} />
         <Route path="/event-management" element={<PrivateRoutes><EventMangement /></PrivateRoutes>} />
         <Route path="/game-update" element={<PrivateRoutes><Gameup /></PrivateRoutes>} />
         <Route path="/player" element={<PrivateRoutes><Player /></PrivateRoutes>} />

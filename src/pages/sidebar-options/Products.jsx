@@ -1,6 +1,6 @@
 import React from 'react'
 import Layoutdesign from '../Layout/Layoutdesign'
-const GameManagement = () => {
+const Products = () => {
   return (
     <Layoutdesign> 
     <div>
@@ -11,4 +11,4 @@ const GameManagement = () => {
   )
 }
 
-export default GameManagement
+export default Products
