@@ -11,8 +11,10 @@ import EventMangement from '../pages/sidebar-options/EventMangement';
 import Dashbo from '../pages/sidebar-options/Dashbo';
 import View1 from '../pages/sidebar-options/View1';
 import LoginUi from '../pages/LoginUi';
+
 import PrivateRoutes from './PrivateRoutes';
 import PublicRoutes from './PublicRoutes';
+import ProductDetails from '../components/ProductDetails';
 
 const Routing = () => {
   return (
@@ -22,6 +24,7 @@ const Routing = () => {
         <Route path="/forgot-password" element={<PublicRoutes><ForgotPassword /></PublicRoutes>} />
         <Route path="/dashboard" element={<PrivateRoutes><Dashboard /></PrivateRoutes>} />
         <Route path="/products" element={<PrivateRoutes><Products /></PrivateRoutes>} />
+        <Route path="/product/:id" element={<PrivateRoutes><ProductDetails /></PrivateRoutes>} /> {/* Add dynamic product details route */}
         <Route path="/event-management" element={<PrivateRoutes><EventMangement /></PrivateRoutes>} />
         <Route path="/game-update" element={<PrivateRoutes><Gameup /></PrivateRoutes>} />
         <Route path="/player" element={<PrivateRoutes><Player /></PrivateRoutes>} />
