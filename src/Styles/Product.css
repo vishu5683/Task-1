@@ -1,0 +1,22 @@
+
+.products-container {
+    padding: 20px;
+  }
+  
+  .products-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .products-description {
+    font-size: 1rem;
+    margin-bottom: 40px;
+  }
+  
+  .product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
