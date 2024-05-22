@@ -6,6 +6,7 @@ const Sidebar = () => {
   const navigate = useNavigate();
 
   const matchProducts = useMatch('/products');
+  const matchProductDetail = useMatch('/product-detail/:id');
   const matchEventManagement = useMatch('/event-management');
   const matchDashboard = useMatch('/dashbo');
   const matchView = useMatch('/view');
@@ -27,7 +28,7 @@ const Sidebar = () => {
       <div className="list-group">
         <button 
           onClick={() => handleNavigation('/products')} 
-          className={`list-group-item list-group-item-action ${matchProducts ? 'active' : ''}`}
+          className={`list-group-item list-group-item-action ${(matchProducts || matchProductDetail) ? 'active' : ''}`}
         >
           Products
         </button>

@@ -24,7 +24,7 @@ const Routing = () => {
         <Route path="/forgot-password" element={<PublicRoutes><ForgotPassword /></PublicRoutes>} />
         <Route path="/dashboard" element={<PrivateRoutes><Dashboard /></PrivateRoutes>} />
         <Route path="/products" element={<PrivateRoutes><Products /></PrivateRoutes>} />
-        <Route path="/product/:id" element={<PrivateRoutes><ProductDetails /></PrivateRoutes>} /> {/* Add dynamic product details route */}
+        <Route path="/product-detail/:id" element={<PrivateRoutes><ProductDetails /></PrivateRoutes>} /> 
         <Route path="/event-management" element={<PrivateRoutes><EventMangement /></PrivateRoutes>} />
         <Route path="/game-update" element={<PrivateRoutes><Gameup /></PrivateRoutes>} />
         <Route path="/player" element={<PrivateRoutes><Player /></PrivateRoutes>} />
