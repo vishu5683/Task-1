@@ -3,6 +3,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import Pic1 from './assets/pic1.png';
 import './LogUi.css';
+import Toast, { notifySuccess, notifyError } from '../components/Toast';
 
 const LoginUi = () => {
   const [username, setUsername] = useState('');
@@ -41,24 +42,34 @@ const LoginUi = () => {
       return res.json();
     })
     .then(data => {
-      if (data.token) { 
+      if (data.token) {
         localStorage.setItem('isLoggedIn', true);
         localStorage.setItem('username', username);
         localStorage.setItem('token', data.token); // Save the token
-        // Redirect to dashboard
+        notifySuccess('Login successful!');
         navigate('/dashboard');
       } else {
-        alert('Invalid username or password. Please try again.');
+        notifyError('Invalid username or password. Please try again.');
       }
     })
     .catch(error => {
-      alert('Invalid username or password. Please try again.');
+      notifyError('Invalid username or password. Please try again.');
       console.error('Error:', error);
     });
   };
 
+  // Testing Toast Notifications
+  // const testSuccessNotification = () => {
+  //   notifySuccess('This is a success message!');
+  // };
+
+  // const testErrorNotification = () => {
+  //   notifyError('This is an error message!');
+  // };
+
   return (
     <div className="login-container">
+      <Toast />
       <img src={Pic1} alt="Login" className="login-image" />
       <form className="login-form" onSubmit={handleSubmit}>
         <div className="mb-3">
@@ -101,6 +112,13 @@ const LoginUi = () => {
         <button type="submit" className="btn btn-primary login-button">
           Login
         </button>
+        {/* Test Buttons for Toast Notifications */}
+        {/* <button type="button" onClick={testSuccessNotification} className="btn btn-success">
+          Test Success Notification
+        </button>
+        <button type="button" onClick={testErrorNotification} className="btn btn-danger">
+          Test Error Notification
+        </button> */}
       </form>
     </div>
   );

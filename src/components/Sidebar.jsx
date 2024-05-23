@@ -1,12 +1,13 @@
 import React from 'react';
 import { useNavigate, useMatch } from 'react-router-dom';
 import "./Dash.css";
+import Toast, { notifySuccess } from '../components/Toast';
 
 const Sidebar = () => {
   const navigate = useNavigate();
 
   const matchProducts = useMatch('/products');
-  const matchProductDetail = useMatch('/product-detail/:id');
+  const matchProductDetail = useMatch('/products/product-detail/:id');
   const matchEventManagement = useMatch('/event-management');
   const matchDashboard = useMatch('/dashbo');
   const matchView = useMatch('/view');
@@ -20,11 +21,13 @@ const Sidebar = () => {
 
   const handleLogout = () => {
     localStorage.clear();
+    notifySuccess('Logout successful!');
     navigate('/');
   };
 
   return (
     <div className="sidebar">
+      <Toast />
       <div className="list-group">
         <button 
           onClick={() => handleNavigation('/products')} 

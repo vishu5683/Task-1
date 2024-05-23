@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import '../Styles/ProductDetails.css';
 import Layoutdesign from '../pages/Layout/Layoutdesign';
-import ReactStars from 'react-rating-stars-component';  
+import ReactStars from 'react-rating-stars-component';
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css'; // Import carousel styles
 
 const ProductDetails = () => {
   const { id } = useParams(); // Extract the product ID from the URL
@@ -33,23 +35,29 @@ const ProductDetails = () => {
   }
 
   return (
-    <Layoutdesign> 
+    <Layoutdesign>
       <div className="product-details-container">
         <div className="product-image">
-          <img src={product.thumbnail} alt={product.title} />
+          <Carousel showThumbs={false} autoPlay infiniteLoop>
+            {product.images.map((image, index) => (
+              <div key={index}>
+                <img src={image} alt={`${product.title} ${index + 1}`} />
+              </div>
+            ))}
+          </Carousel>
         </div>
         <div className="product-info">
           <h1>{product.title}</h1>
           <p>{product.description}</p>
           <p><strong>Price:</strong> ${product.price}</p>
           <p><strong>Discount:</strong> {product.discountPercentage}%</p>
-          <p><strong>Rating:</strong> 
+          <p><strong>Rating:</strong>
             <ReactStars
               count={5}
               value={product.rating}
               size={24}
               activeColor="#ffd700"
-              edit={false}  
+              edit={false}
             />
           </p>
           <p><strong>Stock:</strong> {product.stock} units available</p>
@@ -58,7 +66,7 @@ const ProductDetails = () => {
           <button className="buy-button">Buy</button>
         </div>
       </div>
-    </Layoutdesign> 
+    </Layoutdesign>
   );
 }
 
