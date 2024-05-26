@@ -14,6 +14,7 @@ import PrivateRoutes from './PrivateRoutes';
 import PublicRoutes from './PublicRoutes';
 import ProductDetails from '../components/ProductDetails';
 import Toast from '../components/Toast'; 
+import AddProduct from '../pages/AddProduct';
 
 const Routing = () => {
   return (
@@ -31,6 +32,7 @@ const Routing = () => {
         <Route path="/team" element={<PrivateRoutes><Team /></PrivateRoutes>} />
         <Route path="/dashbo" element={<PrivateRoutes><Dashbo /></PrivateRoutes>} />
         <Route path="/view" element={<PrivateRoutes><View1 /></PrivateRoutes>} />
+        <Route path="/add-product" element={<PrivateRoutes><AddProduct /></PrivateRoutes>} />
       </Routes>
     </BrowserRouter>
   );

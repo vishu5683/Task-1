@@ -4,10 +4,10 @@ import '../Styles/ProductDetails.css';
 import Layoutdesign from '../pages/Layout/Layoutdesign';
 import ReactStars from 'react-rating-stars-component';
 import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css'; // Import carousel styles
+import 'react-responsive-carousel/lib/styles/carousel.min.css'; 
 
 const ProductDetails = () => {
-  const { id } = useParams(); // Extract the product ID from the URL
+  const { id } = useParams(); // Extract the product ID from the URL 
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
