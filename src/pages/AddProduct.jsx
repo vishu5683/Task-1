@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../Styles/AddProduct.css';
-import Toast, { notifySuccess, notifyError } from '../components/Toast'; // Adjust the import path as needed
+import Toast, { notifySuccess, notifyError } from '../components/Toast'; 
+import Layoutdesign from './Layout/Layoutdesign';
 
 const AddProduct = () => {
   const [title, setTitle] = useState('');
@@ -38,6 +39,8 @@ const AddProduct = () => {
   };
 
   return (
+
+    <Layoutdesign>
     <div className="add-product-container">
       <Toast />
       <h1>Add Product</h1>
@@ -80,6 +83,7 @@ const AddProduct = () => {
         <button type="submit" className="add-product-button">Add Product</button>
       </form>
     </div>
+    </Layoutdesign>
   );
 };
 

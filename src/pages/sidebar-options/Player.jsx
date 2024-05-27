@@ -1,6 +1,6 @@
 import React from 'react'
 import Layoutdesign from '../../pages/Layout/Layoutdesign'
-
+import '../../Styles/Product.css';
 const Player = () => {
   return (
     <Layoutdesign> {/* Render within the Layout component */}
