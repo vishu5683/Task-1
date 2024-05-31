@@ -1,0 +1,36 @@
+/* Productlisting.css */
+
+/* Basic styling for the category container */
+.category {
+    padding: 20px;
+    margin: 10px auto;
+    max-width: 1200px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Add some styles for the categories component */
+  .category .categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  /* Example styling for individual category items */
+  .category .categories .category-item {
+    flex: 1 1 200px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    text-align: center;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .category .categories {
+      flex-direction: column;
+    }
+  }
+  

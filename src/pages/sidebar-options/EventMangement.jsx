@@ -1,15 +1,15 @@
-import React from 'react'
-import Layoutdesign from '../Layout/Layoutdesign'
+import React from 'react';
+import Categories from '../../components/Categories';
+import '../../Styles/ProductListing.css'
 
-const EventMangement = () => {
+const EventManagement = () => {
   return (
-    <Layoutdesign> 
-    <div>
-      <h1>Team Management</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Team Management content goes here.</p>
-    </div>
-  </Layoutdesign>
-  )
-}
+  
+      <div className="category">
+        <Categories />
+      </div>
+  
+  );
+};
 
-export default EventMangement
+export default EventManagement;

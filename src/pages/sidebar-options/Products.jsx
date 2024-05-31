@@ -4,18 +4,32 @@ import Layoutdesign from '../Layout/Layoutdesign';
 import Card from '../../components/Card';
 import '../../Styles/Product.css';
 import ReactPaginate from 'react-paginate';
+import Alert from '../../components/Alert';
+import Toast, { notifySuccess, notifyError } from '../../components/Toast'; 
 
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
+  const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
 
-  const fetchProducts = (currentPage) => {
-    const limit = 10;
-    const skip = currentPage * limit;
+  useEffect(() => {
+    fetchProducts(currentPage, searchQuery); 
+  }, [currentPage, searchQuery]);
 
-    fetch(`https://dummyjson.com/products?limit=${limit}&skip=${skip}`)
+  const fetchProducts = (currentPage, searchQuery = '') => {
+    const limit = 12;
+    const skip = currentPage * limit;
+    let url;
+
+    if (searchQuery) {
+      url = `https://dummyjson.com/products/search?q=${searchQuery}&limit=${limit}&skip=${skip}`;
+    } else {
+      url = `https://dummyjson.com/products?limit=${limit}&skip=${skip}`;
+    }
+
+    fetch(url)
       .then(res => res.json())
       .then(data => {
         setProducts(data.products);
@@ -23,10 +37,6 @@ const Products = () => {
       })
       .catch(error => console.error('Error fetching products:', error));
   };
-
-  useEffect(() => {
-    fetchProducts(currentPage);
-  }, [currentPage]);
 
   const handlePageClick = (data) => {
     setCurrentPage(data.selected);
@@ -36,14 +46,57 @@ const Products = () => {
     navigate('/add-product');
   };
 
+  const handleDeleteProduct = (productId) => {
+    const onConfirm = () => {
+      fetch(`https://dummyjson.com/products/${productId}`, {
+        method: 'DELETE'
+      })
+        .then(res => res.json())
+        .then(() => {
+          setProducts(products.filter(product => product.id !== productId));
+          notifySuccess('Item deleted successfully'); 
+        })
+        .catch(error => {
+          console.error('Error deleting product:', error);
+          notifyError('Failed to delete item'); 
+        });
+    };
+
+    const onCancel = () => {
+      console.log('Deletion cancelled');
+    };
+
+    Alert({ onConfirm, onCancel });
+  };
+
+  const handleSearch = (e) => {
+    if (e.key === 'Enter') {
+      fetchProducts(0, searchQuery);
+    }
+  };
+
   return (
     <Layoutdesign>
       <div className="products-container">
         <div className="products-header">
           <h1 className="products-title">Products</h1>
-          <button className="add-product-button" onClick={handleAddProduct}>Add Products</button>
+          <div className="search-add-container">
+            <div className="search-container">
+              <i className="fas fa-search search-icon"></i>
+              <input 
+                type="search" 
+                className="search-input" 
+                placeholder="Search" 
+                aria-label="Search" 
+                aria-describedby="search-addon" 
+                value={searchQuery} 
+                onChange={(e) => setSearchQuery(e.target.value)} 
+                onKeyPress={handleSearch} 
+              />
+            </div>
+            <button className="add-product-button" onClick={handleAddProduct}>Add Products</button>
+          </div>
         </div>
-        <p className="products-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Product content goes here.</p>
         <div className="product-list">
           {products.map((product) => (
             <Card
@@ -52,6 +105,7 @@ const Products = () => {
               description={product.description}
               buttonText="Buy Now"
               image={product.thumbnail}
+              onDelete={() => handleDeleteProduct(product.id)}
             />
           ))}
         </div>
@@ -68,6 +122,7 @@ const Products = () => {
           activeClassName={'active'}
         />
       </div>
+      <Toast /> 
     </Layoutdesign>
   );
 };

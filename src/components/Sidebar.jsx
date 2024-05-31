@@ -1,26 +1,33 @@
 import React from 'react';
 import { useNavigate, useMatch } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../containers/auth/authSlice';
 import "./Dash.css";
 import Toast, { notifySuccess } from '../components/Toast';
 
 const Sidebar = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const auth = useSelector((state) => state.auth); 
 
   const matchProducts = useMatch('/products');
   const matchProductDetail = useMatch('/products/product-detail/:id');
-  const matchEventManagement = useMatch('/event-management');
+  const matchEventManagement = useMatch('/products/categories');
   const matchDashboard = useMatch('/dashbo');
   const matchView = useMatch('/view');
   const matchTeam = useMatch('/team');
   const matchGameUpdate = useMatch('/game-update');
   const matchPlayer = useMatch('/player');
+  const matchAddProduct = useMatch('/add-product');
 
   const handleNavigation = (path) => {
     navigate(path);
   };
 
   const handleLogout = () => {
-    localStorage.clear();
+    console.log('Redux State before logout:', auth); 
+    dispatch(logout());
+    console.log('Redux State after logout:', auth);
     notifySuccess('Logout successful!');
     navigate('/');
   };
@@ -31,15 +38,15 @@ const Sidebar = () => {
       <div className="list-group">
         <button 
           onClick={() => handleNavigation('/products')} 
-          className={`list-group-item list-group-item-action ${(matchProducts || matchProductDetail) ? 'active' : ''}`}
+          className={`list-group-item list-group-item-action ${(matchProducts || matchProductDetail || matchAddProduct) ? 'active' : ''}`}
         >
           Products
         </button>
         <button 
-          onClick={() => handleNavigation('/event-management')} 
+          onClick={() => handleNavigation('/products/categories')} 
           className={`list-group-item list-group-item-action ${matchEventManagement ? 'active' : ''}`}
         >
-          Event Management
+          Categories
         </button>
         <button 
           onClick={() => handleNavigation('/dashbo')} 
@@ -75,6 +82,6 @@ const Sidebar = () => {
       <button onClick={handleLogout} className="logout-button">Logout</button>
     </div>
   );
-}
+};
 
 export default Sidebar;
