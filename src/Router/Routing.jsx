@@ -10,6 +10,8 @@ import EventMangement from '../pages/sidebar-options/EventMangement';
 import Dashbo from '../pages/sidebar-options/Dashbo';
 import View1 from '../pages/sidebar-options/View1';
 import LoginUi from '../pages/LoginUi';
+import TestFirebase from '../components/TestFirebase';
+
 import PrivateRoutes from './PrivateRoutes';
 import PublicRoutes from './PublicRoutes';
 import ProductDetails from '../components/ProductDetails';
@@ -37,6 +39,7 @@ const Routing = () => {
         <Route path="/add-product" element={<PrivateRoutes><AddProduct /></PrivateRoutes>} />
         <Route path="/categories" element={<PrivateRoutes><Categories /></PrivateRoutes>} />
         <Route path="/category/:category" element={<PrivateRoutes><CategoryDetails /></PrivateRoutes>} />
+        <Route path="/test-firebase" element={<PublicRoutes><TestFirebase /></PublicRoutes>} /> 
       </Routes>
     </BrowserRouter>
   );

@@ -15,7 +15,7 @@ const LoginUi = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const auth = useSelector((state) => state.auth); // Get auth state from Redux
+  const auth = useSelector((state) => state.auth);
 
   const validationSchema = Yup.object().shape({
     username: Yup.string()
@@ -52,9 +52,9 @@ const LoginUi = () => {
       })
       .then((data) => {
         if (data.token) {
-          console.log('Redux State before login:', auth); // Log state before login
+          console.log('Redux State before login:', auth);
           dispatch(loginSuccess({ username: data.username, token: data.token }));
-          console.log('Redux State after login:', auth); // Log state after login
+          console.log('Redux State after login:', auth);
           notifySuccess('Login successful!');
           navigate('/dashboard');
         } else {
@@ -69,6 +69,10 @@ const LoginUi = () => {
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
+  };
+
+  const handleMobileLogin = () => {
+    navigate('/test-firebase');
   };
 
   return (
@@ -114,6 +118,9 @@ const LoginUi = () => {
         </div>
         <button type="submit" className="btn btn-primary login-button">
           Login
+        </button>
+        <button onClick={handleMobileLogin} className="btn btn-primary login-button">
+          Login with Mobile Number
         </button>
       </form>
     </div>
