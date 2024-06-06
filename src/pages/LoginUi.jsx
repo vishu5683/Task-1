@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import Pic1 from './assets/pic1.png';
@@ -10,12 +10,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { loginSuccess } from '../containers/auth/authSlice';
 
-
 const LoginUi = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const auth = useSelector((state) => state.auth);
 
   const validationSchema = Yup.object().shape({
     username: Yup.string()
@@ -52,9 +50,7 @@ const LoginUi = () => {
       })
       .then((data) => {
         if (data.token) {
-          console.log('Redux State before login:', auth);
-          dispatch(loginSuccess({ username: data.username, token: data.token }));
-          console.log('Redux State after login:', auth);
+          dispatch(loginSuccess({ username: data.username, token: data.token, email: data.email }));
           notifySuccess('Login successful!');
           navigate('/dashboard');
         } else {

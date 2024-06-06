@@ -6,14 +6,12 @@ import '../../Styles/Product.css';
 import ReactPaginate from 'react-paginate';
 import Alert from '../../components/Alert';
 import Toast, { notifySuccess, notifyError } from '../../components/Toast';
-import EditProductModal from '../../components/EditProductModal';
 
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
-  const [editProduct, setEditProduct] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -77,37 +75,8 @@ const Products = () => {
     }
   };
 
-  const handleEditProduct = (product) => {
-    console.log("Editing product:", product); // Log the product being edited
-    setEditProduct(product);
-  };
-
-  const handleSaveEdit = (updatedProduct) => {
-    fetch(`https://dummyjson.com/products/${updatedProduct.id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(updatedProduct)
-    })
-      .then(res => {
-        if (!res.ok) {
-          throw new Error('Failed to update product');
-        }
-        return res.json();
-      })
-      .then(data => {
-        // Update the product in the local state
-        setProducts(prevProducts =>
-          prevProducts.map(product =>
-            product.id === data.id ? data : product
-          )
-        );
-        notifySuccess('Product updated successfully');
-        setEditProduct(null); // Close the modal
-      })
-      .catch(error => {
-        console.error('Error updating product:', error);
-        notifyError('Failed to update product');
-      });
+  const handleEditProduct = (productId) => {
+    navigate(`/edit-product/${productId}`);
   };
 
   return (
@@ -140,7 +109,7 @@ const Products = () => {
               description={product.description}
               buttonText="Buy Now"
               image={product.thumbnail}
-              onEdit={() => handleEditProduct(product)}
+              onEdit={() => handleEditProduct(product.id)}
               onDelete={() => handleDeleteProduct(product.id)}
             />
           ))}
@@ -159,13 +128,6 @@ const Products = () => {
         />
       </div>
       <Toast />
-      {editProduct && (
-        <EditProductModal
-          product={editProduct}
-          onSave={handleSaveEdit}
-          onClose={() => setEditProduct(null)}
-        />
-      )}
     </Layoutdesign>
   );
 };

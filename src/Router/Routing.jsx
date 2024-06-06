@@ -19,6 +19,7 @@ import Toast from '../components/Toast';
 import AddProduct from '../pages/AddProduct';
 import Categories from '../components/Categories';
 import CategoryDetails from '../components/CategoryDetails';
+import EditProductPage from '../components/EditProductPage';
 
 const Routing = () => {
   return (
@@ -40,6 +41,8 @@ const Routing = () => {
         <Route path="/categories" element={<PrivateRoutes><Categories /></PrivateRoutes>} />
         <Route path="/category/:category" element={<PrivateRoutes><CategoryDetails /></PrivateRoutes>} />
         <Route path="/test-firebase" element={<PublicRoutes><TestFirebase /></PublicRoutes>} /> 
+        <Route path="/edit-product/:id" element={<PrivateRoutes><EditProductPage /></PrivateRoutes>} />
+
       </Routes>
     </BrowserRouter>
   );
