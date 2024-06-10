@@ -2,13 +2,22 @@ import React from 'react';
 import { useNavigate, useMatch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../containers/auth/authSlice';
-import "./Dash.css";
-import Toast, { notifySuccess } from '../components/Toast';
+import  { notifySuccess } from '../components/Toast';
+import { List, ListItem, ListItemIcon, ListItemText, Button } from '@mui/material';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import CategoryIcon from '@mui/icons-material/Category';
+import ProductsIcon from '@mui/icons-material/Store';
+import ViewIcon from '@mui/icons-material/Visibility';
+import TeamIcon from '@mui/icons-material/Group';
+import GameUpdateIcon from '@mui/icons-material/SportsEsports';
+import PlayerIcon from '@mui/icons-material/Person';
+import LogoutIcon from '@mui/icons-material/Logout';
+import "../Styles/sidebar.css"
 
-const Sidebar = () => {
+const Sidebar = ({ isOpen, toggleSidebar }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const auth = useSelector((state) => state.auth); 
+  const auth = useSelector((state) => state.auth);
 
   const matchProducts = useMatch('/products');
   const matchProductDetail = useMatch('/products/product-detail/:id');
@@ -22,64 +31,100 @@ const Sidebar = () => {
 
   const handleNavigation = (path) => {
     navigate(path);
+    toggleSidebar(); // Close sidebar on navigation
   };
 
   const handleLogout = () => {
-    console.log('Redux State before logout:', auth); 
+    console.log('Redux State before logout:', auth);
     dispatch(logout());
     console.log('Redux State after logout:', auth);
     notifySuccess('Logout successful!');
     navigate('/');
+    toggleSidebar(); // Close sidebar on logout
   };
 
   return (
-    <div className="sidebar">
-      <Toast />
-      <div className="list-group">
-        <button 
-          onClick={() => handleNavigation('/products')} 
-          className={`list-group-item list-group-item-action ${(matchProducts || matchProductDetail || matchAddProduct) ? 'active' : ''}`}
+    <div className={`sidebar ${isOpen ? 'open' : ''}`}>
+     
+      <List component="nav" className="list-group">
+        <ListItem
+          button
+          onClick={() => handleNavigation('/products')}
+          selected={matchProducts || matchProductDetail || matchAddProduct}
         >
-          Products
-        </button>
-        <button 
-          onClick={() => handleNavigation('/products/categories')} 
-          className={`list-group-item list-group-item-action ${matchEventManagement ? 'active' : ''}`}
+          <ListItemIcon>
+            <ProductsIcon />
+          </ListItemIcon>
+          <ListItemText className="list-item-text" primary="Products" />
+        </ListItem>
+        <ListItem
+          button
+          onClick={() => handleNavigation('/products/categories')}
+          selected={matchEventManagement}
         >
-          Categories
-        </button>
-        <button 
-          onClick={() => handleNavigation('/dashbo')} 
-          className={`list-group-item list-group-item-action ${matchDashboard ? 'active' : ''}`}
+          <ListItemIcon>
+            <CategoryIcon />
+          </ListItemIcon>
+          <ListItemText className="list-item-text" primary="Categories" />
+        </ListItem>
+        <ListItem
+          button
+          onClick={() => handleNavigation('/dashbo')}
+          selected={matchDashboard}
         >
-          Dashboard
-        </button>
-        <button 
-          onClick={() => handleNavigation('/view')} 
-          className={`list-group-item list-group-item-action ${matchView ? 'active' : ''}`}
+          <ListItemIcon>
+            <DashboardIcon />
+          </ListItemIcon>
+          <ListItemText className="list-item-text" primary="Dashboard" />
+        </ListItem>
+        <ListItem
+          button
+          onClick={() => handleNavigation('/view')}
+          selected={matchView}
         >
-          View
-        </button>
-        <button 
-          onClick={() => handleNavigation('/team')} 
-          className={`list-group-item list-group-item-action ${matchTeam ? 'active' : ''}`}
+          <ListItemIcon>
+            <ViewIcon />
+          </ListItemIcon>
+          <ListItemText className="list-item-text" primary="View" />
+        </ListItem>
+        <ListItem
+          button
+          onClick={() => handleNavigation('/team')}
+          selected={matchTeam}
         >
-          Team Creation View
-        </button>
-        <button 
-          onClick={() => handleNavigation('/game-update')} 
-          className={`list-group-item list-group-item-action ${matchGameUpdate ? 'active' : ''}`}
+          <ListItemIcon>
+            <TeamIcon />
+          </ListItemIcon>
+          <ListItemText className="list-item-text" primary="Team Creation View" />
+        </ListItem>
+        <ListItem
+          button
+          onClick={() => handleNavigation('/game-update')}
+          selected={matchGameUpdate}
         >
-          Games update
-        </button>
-        <button 
-          onClick={() => handleNavigation('/player')} 
-          className={`list-group-item list-group-item-action ${matchPlayer ? 'active' : ''}`}
+          <ListItemIcon>
+            <GameUpdateIcon />
+          </ListItemIcon>
+          <ListItemText className="list-item-text" primary="Games Update" />
+        </ListItem>
+        <ListItem
+          button
+          onClick={() => handleNavigation('/player')}
+          selected={matchPlayer}
         >
-          Player
-        </button>
-      </div>
-      <button onClick={handleLogout} className="logout-button">Logout</button>
+          <ListItemIcon>
+            <PlayerIcon />
+          </ListItemIcon>
+          <ListItemText className="list-item-text" primary="Player" />
+        </ListItem>
+      </List>
+      <Button
+        onClick={handleLogout}
+        startIcon={<LogoutIcon />}
+        className="logout-button"
+      >
+        Logout
+      </Button>
     </div>
   );
 };

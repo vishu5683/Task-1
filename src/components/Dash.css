@@ -13,20 +13,32 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+   
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-  }
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
 .logo { 
     color: white; 
     font-size: 28px; 
     font-weight: bold; 
+    margin-left: 10px;
 } 
 
-.icon { 
-    font-size: 40px; 
-    color: white; 
+.hamburger-icon {
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-left: -13px;
 }
+
+
 
 .container { 
     display: flex; 
@@ -131,12 +143,10 @@ body {
     background-color: #f8f9fa;
     min-height: calc(100vh - 60px);
 }
+
 .list-group-item.active {
     background-color: #007bff;
     color: white;
-  }
-  
-  .list-group-item.active {
-    background-color: #007bff; 
-    color: white; 
-  }
+}
+
+

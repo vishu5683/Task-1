@@ -21,6 +21,9 @@ import Categories from '../components/Categories';
 import CategoryDetails from '../components/CategoryDetails';
 import EditProductPage from '../components/EditProductPage';
 
+
+
+
 const Routing = () => {
   return (
     <BrowserRouter>

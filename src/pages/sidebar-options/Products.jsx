@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Layoutdesign from '../Layout/Layoutdesign';
 import Card from '../../components/Card';
@@ -6,19 +6,18 @@ import '../../Styles/Product.css';
 import ReactPaginate from 'react-paginate';
 import Alert from '../../components/Alert';
 import Toast, { notifySuccess, notifyError } from '../../components/Toast';
+import Loader from '../../components/Loader';
+import withLoader from '../../components/withLoader';
 
-const Products = () => {
+const Products = ({ isLoading, setIsLoading }) => {
   const [products, setProducts] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetchProducts(currentPage, searchQuery);
-  }, [currentPage, searchQuery]);
-
-  const fetchProducts = (currentPage, searchQuery = '') => {
+  const fetchProducts = useCallback((currentPage, searchQuery = '') => {
+    setIsLoading(true);
     const limit = 12;
     const skip = currentPage * limit;
     let url;
@@ -35,8 +34,13 @@ const Products = () => {
         setProducts(data.products);
         setPageCount(Math.ceil(data.total / limit));
       })
-      .catch(error => console.error('Error fetching products:', error));
-  };
+      .catch(error => console.error('Error fetching products:', error))
+      .finally(() => setIsLoading(false));
+  }, [setIsLoading]);
+
+  useEffect(() => {
+    fetchProducts(currentPage, searchQuery);
+  }, [currentPage, searchQuery, fetchProducts]);
 
   const handlePageClick = (data) => {
     setCurrentPage(data.selected);
@@ -102,7 +106,7 @@ const Products = () => {
           </div>
         </div>
         <div className="product-list">
-          {products.map((product) => (
+          {isLoading ? <Loader /> : products.map((product) => (
             <Card
               key={product.id}
               title={product.title}
@@ -132,4 +136,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default withLoader(Products);
