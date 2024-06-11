@@ -2,8 +2,8 @@ import React from 'react';
 import { useNavigate, useMatch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../containers/auth/authSlice';
-import  { notifySuccess } from '../components/Toast';
-import { List, ListItem, ListItemIcon, ListItemText, Button } from '@mui/material';
+import { notifySuccess } from '../components/Toast';
+import { List, ListItem, ListItemIcon, ListItemText} from '@mui/material';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import CategoryIcon from '@mui/icons-material/Category';
 import ProductsIcon from '@mui/icons-material/Store';
@@ -12,7 +12,7 @@ import TeamIcon from '@mui/icons-material/Group';
 import GameUpdateIcon from '@mui/icons-material/SportsEsports';
 import PlayerIcon from '@mui/icons-material/Person';
 import LogoutIcon from '@mui/icons-material/Logout';
-import "../Styles/sidebar.css"
+import "../Styles/sidebar.css"; // Ensure this path is correct
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   const navigate = useNavigate();
@@ -44,18 +44,17 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
   };
 
   return (
-    <div className={`sidebar ${isOpen ? 'open' : ''}`}>
-     
+    <div className={`sidebar ${isOpen ? 'open' : 'closed'}`}>
       <List component="nav" className="list-group">
         <ListItem
           button
           onClick={() => handleNavigation('/products')}
           selected={matchProducts || matchProductDetail || matchAddProduct}
         >
-          <ListItemIcon>
-            <ProductsIcon />
+          <ListItemIcon >
+            <ProductsIcon className="sidebar-icon" />
           </ListItemIcon>
-          <ListItemText className="list-item-text" primary="Products" />
+          {isOpen && <ListItemText className="list-item-text" primary="Products" />}
         </ListItem>
         <ListItem
           button
@@ -63,9 +62,9 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
           selected={matchEventManagement}
         >
           <ListItemIcon>
-            <CategoryIcon />
+            <CategoryIcon className="sidebar-icon" />
           </ListItemIcon>
-          <ListItemText className="list-item-text" primary="Categories" />
+          {isOpen && <ListItemText className="list-item-text" primary="Categories" />}
         </ListItem>
         <ListItem
           button
@@ -73,9 +72,9 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
           selected={matchDashboard}
         >
           <ListItemIcon>
-            <DashboardIcon />
+            <DashboardIcon className="sidebar-icon" />
           </ListItemIcon>
-          <ListItemText className="list-item-text" primary="Dashboard" />
+          {isOpen && <ListItemText className="list-item-text" primary="Dashboard" />}
         </ListItem>
         <ListItem
           button
@@ -83,9 +82,9 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
           selected={matchView}
         >
           <ListItemIcon>
-            <ViewIcon />
+            <ViewIcon className="sidebar-icon" />
           </ListItemIcon>
-          <ListItemText className="list-item-text" primary="View" />
+          {isOpen && <ListItemText className="list-item-text" primary="View" />}
         </ListItem>
         <ListItem
           button
@@ -93,9 +92,9 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
           selected={matchTeam}
         >
           <ListItemIcon>
-            <TeamIcon />
+            <TeamIcon className="sidebar-icon" />
           </ListItemIcon>
-          <ListItemText className="list-item-text" primary="Team Creation View" />
+          {isOpen && <ListItemText className="list-item-text" primary="Team Creation View" />}
         </ListItem>
         <ListItem
           button
@@ -103,9 +102,9 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
           selected={matchGameUpdate}
         >
           <ListItemIcon>
-            <GameUpdateIcon />
+            <GameUpdateIcon className="sidebar-icon" />
           </ListItemIcon>
-          <ListItemText className="list-item-text" primary="Games Update" />
+          {isOpen && <ListItemText className="list-item-text" primary="Games Update" />}
         </ListItem>
         <ListItem
           button
@@ -113,18 +112,22 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
           selected={matchPlayer}
         >
           <ListItemIcon>
-            <PlayerIcon />
+            <PlayerIcon className="sidebar-icon" />
           </ListItemIcon>
-          <ListItemText className="list-item-text" primary="Player" />
+          {isOpen && <ListItemText className="list-item-text" primary="Player" />}
         </ListItem>
       </List>
-      <Button
+      <hr className="sidebar-divider" />
+      <ListItem
+        button
         onClick={handleLogout}
-        startIcon={<LogoutIcon />}
         className="logout-button"
       >
-        Logout
-      </Button>
+        <ListItemIcon>
+          <LogoutIcon className="sidebar-icon" />
+        </ListItemIcon>
+        {isOpen && <ListItemText className="list-item-text" primary="Logout" />}
+      </ListItem>
     </div>
   );
 };
