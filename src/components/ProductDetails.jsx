@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import '../Styles/ProductDetails.css';
 import Layoutdesign from '../pages/Layout/Layoutdesign';
 import ReactStars from 'react-rating-stars-component';
 import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css'; 
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 const ProductDetails = () => {
-  const { id } = useParams(); // Extract the product ID from the URL 
+  const { id } = useParams(); // Extract the product ID from the URL
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate(); // Add navigate hook
 
   useEffect(() => {
     // Fetch product details based on the ID
@@ -27,12 +28,16 @@ const ProductDetails = () => {
   }, [id]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="loading">Loading...</div>;
   }
 
   if (error) {
-    return <div>Error fetching product details: {error.message}</div>;
+    return <div className="error">Error fetching product details: {error.message}</div>;
   }
+
+  const handleBuyNow = () => {
+    navigate('/address');
+  };
 
   return (
     <Layoutdesign>
@@ -47,11 +52,14 @@ const ProductDetails = () => {
           </Carousel>
         </div>
         <div className="product-info">
-          <h1>{product.title}</h1>
-          <p>{product.description}</p>
-          <p><strong>Price:</strong> ${product.price}</p>
-          <p><strong>Discount:</strong> {product.discountPercentage}%</p>
-          <p><strong>Rating:</strong>
+          <h1 className="product-title">{product.title}</h1>
+          <p className="product-description">{product.description}</p>
+          <div className="product-price-discount">
+            <p className="product-price"><strong>Price:</strong> ${product.price}</p>
+            <p className="product-discount"><strong>Discount:</strong> {product.discountPercentage}%</p>
+          </div>
+          <div className="product-rating">
+            <strong>Rating:</strong>
             <ReactStars
               count={5}
               value={product.rating}
@@ -59,11 +67,11 @@ const ProductDetails = () => {
               activeColor="#ffd700"
               edit={false}
             />
-          </p>
-          <p><strong>Stock:</strong> {product.stock} units available</p>
-          <p><strong>Brand:</strong> {product.brand}</p>
-          <p><strong>Category:</strong> {product.category}</p>
-          <button className="buy-button">Buy</button>
+          </div>
+          <p className="product-stock"><strong>Stock:</strong> {product.stock} units available</p>
+          <p className="product-brand"><strong>Brand:</strong> {product.brand}</p>
+          <p className="product-category"><strong>Category:</strong> {product.category}</p>
+          <button className="buy-button" onClick={handleBuyNow}>Buy Now</button>
         </div>
       </div>
     </Layoutdesign>

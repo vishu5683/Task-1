@@ -1,3 +1,4 @@
+/* Card.css */
 .card {
   background-color: #fff;
   border: 1px solid #ddd;
@@ -43,23 +44,22 @@
   background-color: #0056b3;
 }
 
-.edit-button {
-  background-color: #201f1d;
+.add-to-cart-button {
+  background-color: #28a79c;
   color: white;
   border: none;
   padding: 10px 20px;
   margin-top: 10px;
-  margin-right: 10px;
   cursor: pointer;
   border-radius: 4px;
 }
 
-.edit-button:hover {
-  background-color: #e67e22;
+.add-to-cart-button:hover {
+  background-color: #218838;
 }
 
 .delete-button {
-  background-color: #614e4c;
+  background-color: #dc3545;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -69,5 +69,64 @@
 }
 
 .delete-button:hover {
-  background-color: #c0392b;
+  background-color: #c82333;
+}
+/* Dash.css */
+.cart-icon-container {
+  position: relative;
+  display: inline-block;
+}
+
+.cart-counter {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 5px 10px;
+  font-size: 12px;
+}
+.button-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-button, .add-to-cart-button, .delete-button {
+  margin-top: 10px;
+  padding: 3px 66px;
+  border-radius: 4px;
+  font-size: 21px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.card-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+}
+
+.card-button:hover {
+  background-color: #0056b3;
+}
+
+.add-to-cart-button {
+  background-color: #28a79c;
+  color: white;
+  border: none;
+}
+
+.add-to-cart-button:hover {
+  background-color: #218838;
+}
+
+.delete-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
 }

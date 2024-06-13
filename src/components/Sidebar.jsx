@@ -78,43 +78,43 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         </ListItem>
         <ListItem
           button
-          onClick={() => handleNavigation('/view')}
+          onClick={() => handleNavigation('/view-orders')}
           selected={matchView}
         >
           <ListItemIcon>
             <ViewIcon className="sidebar-icon" />
           </ListItemIcon>
-          {isOpen && <ListItemText className="list-item-text" primary="View" />}
+          {isOpen && <ListItemText className="list-item-text" primary="View Orders" />}
         </ListItem>
         <ListItem
           button
-          onClick={() => handleNavigation('/team')}
+          onClick={() => handleNavigation('/Address-List')}
           selected={matchTeam}
         >
           <ListItemIcon>
             <TeamIcon className="sidebar-icon" />
           </ListItemIcon>
-          {isOpen && <ListItemText className="list-item-text" primary="Team Creation View" />}
+          {isOpen && <ListItemText className="list-item-text" primary="Manage Address" />}
         </ListItem>
         <ListItem
           button
-          onClick={() => handleNavigation('/game-update')}
+          onClick={() => handleNavigation('/wallet')}
           selected={matchGameUpdate}
         >
           <ListItemIcon>
             <GameUpdateIcon className="sidebar-icon" />
           </ListItemIcon>
-          {isOpen && <ListItemText className="list-item-text" primary="Games Update" />}
+          {isOpen && <ListItemText className="list-item-text" primary="Wallet" />}
         </ListItem>
         <ListItem
           button
-          onClick={() => handleNavigation('/player')}
+          onClick={() => handleNavigation('/profile')}
           selected={matchPlayer}
         >
           <ListItemIcon>
             <PlayerIcon className="sidebar-icon" />
           </ListItemIcon>
-          {isOpen && <ListItemText className="list-item-text" primary="Player" />}
+          {isOpen && <ListItemText className="list-item-text" primary="Profile" />}
         </ListItem>
       </List>
       <hr className="sidebar-divider" />

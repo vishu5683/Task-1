@@ -1,0 +1,131 @@
+/* orders.css */
+.view-orders-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.view-orders-title {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.orders-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.order-item {
+  background-color: #fff;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-details h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #333;
+}
+
+.order-details p {
+  margin: 5px 0;
+  color: #666;
+}
+
+.order-status {
+  font-weight: bold;
+}
+
+.order-status.pending {
+  color: #ff9800;
+}
+
+.order-status.shipped {
+  color: #4caf50;
+}
+
+.order-status.delivered {
+  color: #2196f3;
+}
+
+.view-details-button,
+.cancel-order-button,
+.update-status-button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.view-details-button {
+  background-color: #2196f3;
+  color: #fff;
+}
+
+.cancel-order-button {
+  background-color: #f44336;
+  color: #fff;
+  margin-right: 10px;
+}
+
+.update-status-button {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.no-orders-message {
+  text-align: center;
+  font-size: 18px;
+  color: #666;
+}
+
+/* Modal styles */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 1000;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px;
+  z-index: 1001;
+}
+
+.modal h3 {
+  margin-top: 0;
+}
+
+.close-modal-button {
+  background-color: #2196f3;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 14px;
+  display: block;
+  margin: 20px auto 0;
+}

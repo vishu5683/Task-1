@@ -1,20 +1,23 @@
 import React from 'react';
 import "./Dash.css";
-import { MdHeadphones } from "react-icons/md";
 import { useSelector } from 'react-redux';
 import { FaBars } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom'; 
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const Header = ({ toggleSidebar }) => {
   const navigate = useNavigate(); 
   const auth = useSelector((state) => state.auth);
+  const cartItems = useSelector((state) => state.cart?.items || []);
+
+  const cartItemCount = cartItems.length;
 
   return (
     <div>
       <header className="header">
         <div className="logo-container">
           <FaBars className="hamburger-icon" onClick={toggleSidebar} /> 
-          <span onClick={() => navigate('/Dashboard')} className="logo">Logo</span>
+          <span onClick={() => navigate('/dashboard')} className="logo">Logo</span>
         </div>
         {auth.username && (
           <div className="user-info">
@@ -23,7 +26,12 @@ const Header = ({ toggleSidebar }) => {
             <span>{auth.email}</span>
           </div>
         )}
-        <MdHeadphones className="icon" />
+        <div className="icons-container">
+          <div className="cart-icon-container" onClick={() => navigate('/cart')}>
+            <ShoppingCartIcon className="icon" /> 
+            {cartItemCount > 0 && <span className="cart-counter">{cartItemCount}</span>}
+          </div>
+        </div>
       </header>
     </div>
   );

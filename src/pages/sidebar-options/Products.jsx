@@ -1,5 +1,8 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../containers/reducer/cartSlice'; // Import the addToCart action
+
 import Layoutdesign from '../Layout/Layoutdesign';
 import Card from '../../components/Card';
 import '../../Styles/Product.css';
@@ -15,6 +18,7 @@ const Products = ({ isLoading, setIsLoading }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const fetchProducts = useCallback((currentPage, searchQuery = '') => {
     setIsLoading(true);
@@ -79,8 +83,8 @@ const Products = ({ isLoading, setIsLoading }) => {
     }
   };
 
-  const handleEditProduct = (productId) => {
-    navigate(`/edit-product/${productId}`);
+  const handleBuyNow = (productId) => {
+    navigate(`/products/product-detail/${productId}`);
   };
 
   return (
@@ -113,8 +117,9 @@ const Products = ({ isLoading, setIsLoading }) => {
               description={product.description}
               buttonText="Buy Now"
               image={product.thumbnail}
-              onEdit={() => handleEditProduct(product.id)}
               onDelete={() => handleDeleteProduct(product.id)}
+              onButtonClick={() => handleBuyNow(product.id)} // Navigate to product detail
+              onAddToCart={() => dispatch(addToCart({ id: product.id, title: product.title, price: product.price, quantity: 1 }))} // Add product to cart
             />
           ))}
         </div>
