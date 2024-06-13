@@ -4,7 +4,7 @@ import storage from 'redux-persist/lib/storage';
 import logger from 'redux-logger';
 import authReducer from '../containers/auth/authSlice';
 import cartReducer from '../containers/reducer/cartSlice';
-import orderReducer from '../containers/reducer/OrderSilce';
+import orderReducer from '../containers/reducer/OrderSilce'; // Ensure correct import path
 import walletReducer from '../containers/reducer/walletSlice'; // Import the wallet reducer
 
 // Persist config for auth state
@@ -25,17 +25,24 @@ const walletPersistConfig = {
   storage,
 };
 
+// Persist config for orders state
+const ordersPersistConfig = {
+  key: 'orders',
+  storage,
+};
+
 // Persisted reducers
 const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);
 const persistedCartReducer = persistReducer(cartPersistConfig, cartReducer);
 const persistedWalletReducer = persistReducer(walletPersistConfig, walletReducer);
+const persistedOrdersReducer = persistReducer(ordersPersistConfig, orderReducer);
 
 const store = configureStore({
   reducer: {
     auth: persistedAuthReducer,
     cart: persistedCartReducer,
-    orders: orderReducer,
-    wallet: persistedWalletReducer, // Add persisted wallet reducer to the store
+    orders: persistedOrdersReducer,
+    wallet: persistedWalletReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });

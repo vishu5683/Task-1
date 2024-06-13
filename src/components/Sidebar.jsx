@@ -1,46 +1,42 @@
 import React from 'react';
-import { useNavigate, useMatch } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { logout } from '../containers/auth/authSlice';
 import { notifySuccess } from '../components/Toast';
-import { List, ListItem, ListItemIcon, ListItemText} from '@mui/material';
+import { List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import CategoryIcon from '@mui/icons-material/Category';
 import ProductsIcon from '@mui/icons-material/Store';
-import ViewIcon from '@mui/icons-material/Visibility';
-import TeamIcon from '@mui/icons-material/Group';
-import GameUpdateIcon from '@mui/icons-material/SportsEsports';
-import PlayerIcon from '@mui/icons-material/Person';
+import ViewListIcon from '@mui/icons-material/ViewList';  // Changed Icon for View Orders
+import HomeIcon from '@mui/icons-material/Home';          // Changed Icon for Addresses
+import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';  // Changed Icon for Wallet
+import PersonIcon from '@mui/icons-material/Person';      // Changed Icon for Profile
 import LogoutIcon from '@mui/icons-material/Logout';
-import "../Styles/sidebar.css"; // Ensure this path is correct
+import "../Styles/sidebar.css";
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const auth = useSelector((state) => state.auth);
+  const location = useLocation();
 
-  const matchProducts = useMatch('/products');
-  const matchProductDetail = useMatch('/products/product-detail/:id');
-  const matchEventManagement = useMatch('/products/categories');
-  const matchDashboard = useMatch('/dashbo');
-  const matchView = useMatch('/view');
-  const matchTeam = useMatch('/team');
-  const matchGameUpdate = useMatch('/game-update');
-  const matchPlayer = useMatch('/player');
-  const matchAddProduct = useMatch('/add-product');
+  const isActive = (path) => {
+    return location.pathname === path;
+  };
 
   const handleNavigation = (path) => {
     navigate(path);
-    toggleSidebar(); // Close sidebar on navigation
+    if (isOpen) {
+      toggleSidebar();
+    }
   };
 
   const handleLogout = () => {
-    console.log('Redux State before logout:', auth);
     dispatch(logout());
-    console.log('Redux State after logout:', auth);
     notifySuccess('Logout successful!');
     navigate('/');
-    toggleSidebar(); // Close sidebar on logout
+    if (isOpen) {
+      toggleSidebar();
+    }
   };
 
   return (
@@ -49,9 +45,9 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         <ListItem
           button
           onClick={() => handleNavigation('/products')}
-          selected={matchProducts || matchProductDetail || matchAddProduct}
+          selected={isActive('/products')}
         >
-          <ListItemIcon >
+          <ListItemIcon>
             <ProductsIcon className="sidebar-icon" />
           </ListItemIcon>
           {isOpen && <ListItemText className="list-item-text" primary="Products" />}
@@ -59,7 +55,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         <ListItem
           button
           onClick={() => handleNavigation('/products/categories')}
-          selected={matchEventManagement}
+          selected={isActive('/products/categories')}
         >
           <ListItemIcon>
             <CategoryIcon className="sidebar-icon" />
@@ -69,7 +65,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         <ListItem
           button
           onClick={() => handleNavigation('/dashbo')}
-          selected={matchDashboard}
+          selected={isActive('/dashbo')}
         >
           <ListItemIcon>
             <DashboardIcon className="sidebar-icon" />
@@ -79,40 +75,40 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         <ListItem
           button
           onClick={() => handleNavigation('/view-orders')}
-          selected={matchView}
+          selected={isActive('/view-orders')}
         >
           <ListItemIcon>
-            <ViewIcon className="sidebar-icon" />
+            <ViewListIcon className="sidebar-icon" />
           </ListItemIcon>
           {isOpen && <ListItemText className="list-item-text" primary="View Orders" />}
         </ListItem>
         <ListItem
           button
           onClick={() => handleNavigation('/Address-List')}
-          selected={matchTeam}
+          selected={isActive('/Address-List')}
         >
           <ListItemIcon>
-            <TeamIcon className="sidebar-icon" />
+            <HomeIcon className="sidebar-icon" />
           </ListItemIcon>
-          {isOpen && <ListItemText className="list-item-text" primary="Manage Address" />}
+          {isOpen && <ListItemText className="list-item-text" primary="Manage Addresses" />}
         </ListItem>
         <ListItem
           button
           onClick={() => handleNavigation('/wallet')}
-          selected={matchGameUpdate}
+          selected={isActive('/wallet')}
         >
           <ListItemIcon>
-            <GameUpdateIcon className="sidebar-icon" />
+            <AccountBalanceWalletIcon className="sidebar-icon" />
           </ListItemIcon>
           {isOpen && <ListItemText className="list-item-text" primary="Wallet" />}
         </ListItem>
         <ListItem
           button
           onClick={() => handleNavigation('/profile')}
-          selected={matchPlayer}
+          selected={isActive('/profile')}
         >
           <ListItemIcon>
-            <PlayerIcon className="sidebar-icon" />
+            <PersonIcon className="sidebar-icon" />
           </ListItemIcon>
           {isOpen && <ListItemText className="list-item-text" primary="Profile" />}
         </ListItem>
