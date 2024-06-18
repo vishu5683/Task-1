@@ -1,8 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { addToCart } from '../../containers/reducer/cartSlice'; // Import the addToCart action
-
+import { addToCart } from '../../containers/reducer/cartSlice';
 import Layoutdesign from '../Layout/Layoutdesign';
 import Card from '../../components/Card';
 import '../../Styles/Product.css';
@@ -118,8 +117,8 @@ const Products = ({ isLoading, setIsLoading }) => {
               buttonText="Buy Now"
               image={product.thumbnail}
               onDelete={() => handleDeleteProduct(product.id)}
-              onButtonClick={() => handleBuyNow(product.id)} // Navigate to product detail
-              onAddToCart={() => dispatch(addToCart({ id: product.id, title: product.title, price: product.price, quantity: 1 }))} // Add product to cart
+              onButtonClick={() => handleBuyNow(product.id)}
+              onAddToCart={() => dispatch(addToCart({ id: product.id, title: product.title, price: product.price, quantity: 1 }))}
             />
           ))}
         </div>

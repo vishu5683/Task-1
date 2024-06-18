@@ -1,130 +1,79 @@
 /* Card.css */
+
 .card {
-  background-color: #fff;
+  background: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin: 20px;
-  width: 300px;
-  transition: box-shadow 0.3s ease;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .card:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+}
+
+.card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
 }
 
 .card-title {
-  font-size: 24px;
+  font-size: 1.5em;
   margin-bottom: 10px;
   color: #333;
 }
 
 .card-description {
-  font-size: 16px;
+  font-size: 1em;
   margin-bottom: 20px;
   color: #666;
+  flex: 1;
 }
 
-.card-button {
-  background-color: #007bff;
-  border: none;
-  border-radius: 4px;
-  color: #fff;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.card-button:hover {
-  background-color: #0056b3;
-}
-
-.add-to-cart-button {
-  background-color: #28a79c;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  margin-top: 10px;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-.add-to-cart-button:hover {
-  background-color: #218838;
-}
-
-.delete-button {
-  background-color: #dc3545;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  margin-top: 10px;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-.delete-button:hover {
-  background-color: #c82333;
-}
-/* Dash.css */
-.cart-icon-container {
-  position: relative;
-  display: inline-block;
-}
-
-.cart-counter {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  background-color: red;
-  color: white;
-  border-radius: 50%;
-  padding: 5px 10px;
-  font-size: 12px;
-}
-.button-group {
+.card-buttons {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+  margin-top: 10px;
 }
 
-.card-button, .add-to-cart-button, .delete-button {
-  margin-top: 10px;
-  padding: 3px 66px;
-  border-radius: 4px;
-  font-size: 21px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
 .card-button {
-  background-color: #007bff;
-  color: #fff;
+  flex: 1;
+  padding: 10px 15px;
   border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  font-size: 0.9em;
+  transition: background-color 0.3s ease;
+  margin-right: 10px;
+  text-align: center;
+}
+
+.card-button:last-child {
+  margin-right: 0;
 }
 
 .card-button:hover {
   background-color: #0056b3;
 }
 
-.add-to-cart-button {
-  background-color: #28a79c;
-  color: white;
-  border: none;
-}
-
-.add-to-cart-button:hover {
-  background-color: #218838;
-}
-
 .delete-button {
   background-color: #dc3545;
-  color: white;
-  border: none;
 }
 
 .delete-button:hover {

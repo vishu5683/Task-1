@@ -1,4 +1,4 @@
-// src/components/Address.jsx
+// Address.jsx
 import React, { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -7,6 +7,9 @@ import { notifySuccess } from '../components/Toast';
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 import '../Styles/address.css';
 import Layoutdesign from '../pages/Layout/Layoutdesign';
+import GetCurrentAddress from './GetCurrentAddress.jsx';
+
+const GOOGLE_MAPS_API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
 
 const containerStyle = {
   width: '100%',
@@ -34,7 +37,7 @@ const Address = () => {
 
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: 'YOUR_GOOGLE_MAPS_API_KEY' // Replace with your Google Maps API key
+    googleMapsApiKey: GOOGLE_MAPS_API_KEY
   });
 
   const handleChange = (e) => {
@@ -57,7 +60,6 @@ const Address = () => {
     setMarker({ lat: event.latLng.lat(), lng: event.latLng.lng() });
   }, []);
 
-  // Placeholder for retrieving saved addresses
   const savedAddress = {
     name: 'John Doe',
     street: '123 Main St',
@@ -71,6 +73,9 @@ const Address = () => {
     <Layoutdesign>
       <div className="address-container">
         <h1 className="address-title">Shipping Address</h1>
+
+        <GetCurrentAddress />
+
         {showMap ? (
           <>
             <div className="map-container">

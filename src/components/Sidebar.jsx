@@ -62,16 +62,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
           </ListItemIcon>
           {isOpen && <ListItemText className="list-item-text" primary="Categories" />}
         </ListItem>
-        <ListItem
-          button
-          onClick={() => handleNavigation('/dashbo')}
-          selected={isActive('/dashbo')}
-        >
-          <ListItemIcon>
-            <DashboardIcon className="sidebar-icon" />
-          </ListItemIcon>
-          {isOpen && <ListItemText className="list-item-text" primary="Dashboard" />}
-        </ListItem>
+       
         <ListItem
           button
           onClick={() => handleNavigation('/view-orders')}
@@ -111,6 +102,16 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
             <PersonIcon className="sidebar-icon" />
           </ListItemIcon>
           {isOpen && <ListItemText className="list-item-text" primary="Profile" />}
+        </ListItem>
+        <ListItem
+          button
+          onClick={() => handleNavigation('/dashbo')}
+          selected={isActive('/dashbo')}
+        >
+          <ListItemIcon>
+            <DashboardIcon className="sidebar-icon" />
+          </ListItemIcon>
+          {isOpen && <ListItemText className="list-item-text" primary="Customer Support" />}
         </ListItem>
       </List>
       <hr className="sidebar-divider" />
