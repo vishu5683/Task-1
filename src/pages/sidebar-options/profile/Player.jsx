@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import {  Typography, Avatar, Button, Select, MenuItem, InputLabel, FormControl, Grid, Container, Paper } from '@mui/material';
 import { styled } from '@mui/system';
-import Layoutdesign from '../Layout/Layoutdesign';
-import '../../Styles/profile.css';
+import Layoutdesign from '../../Layout/Layoutdesign';
+import '../../../Styles/profile.css';
 
 const ProfileContainer = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(3),

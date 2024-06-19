@@ -1,15 +1,15 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { addToCart } from '../../containers/reducer/cartSlice';
-import Layoutdesign from '../Layout/Layoutdesign';
-import Card from '../../components/Card';
-import '../../Styles/Product.css';
+import { addToCart } from '../../../containers/reducer/cartSlice';
+import Layoutdesign from '../../Layout/Layoutdesign';
+import Card from '../../../components/Card';
+import '../../../Styles/Product.css';
 import ReactPaginate from 'react-paginate';
-import Alert from '../../components/Alert';
-import Toast, { notifySuccess, notifyError } from '../../components/Toast';
-import Loader from '../../components/Loader';
-import withLoader from '../../components/withLoader';
+import Alert from '../../../components/Alert';
+import Toast, { notifySuccess, notifyError } from '../../../components/Toast';
+import Loader from '../../../components/Loader';
+import withLoader from '../../../components/withLoader';
 
 const Products = ({ isLoading, setIsLoading }) => {
   const [products, setProducts] = useState([]);

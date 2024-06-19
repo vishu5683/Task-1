@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../Styles/AddProduct.css';
-import Toast, { notifySuccess, notifyError } from '../components/Toast';
-import Layoutdesign from './Layout/Layoutdesign';
+import '../../../Styles/AddProduct.css';
+import Toast, { notifySuccess, notifyError } from '../../../components/Toast';
+
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import Layoutdesign from '../../Layout/Layoutdesign';
 
 const schema = yup.object().shape({
   title: yup.string().required('Title is required'),

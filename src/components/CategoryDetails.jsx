@@ -4,7 +4,7 @@ import '../Styles/CategoryDetails.css';
 import Card from '../components/Card'; 
 import Layoutdesign from '../pages/Layout/Layoutdesign';
 import Loader from '../components/Loader';
-import withLoader from '../components/withLoader';
+import withLoader from './withLoader';
 
 const CategoryDetails = ({ isLoading, setIsLoading }) => {
   const { category } = useParams();

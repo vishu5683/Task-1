@@ -86,3 +86,49 @@ button {
 button:hover {
   background-color: #0056b3;
 }
+
+.address-card {
+  position: relative;
+  border: 2px solid transparent;
+}
+
+.default-address-card {
+  border-color: #1976d2; /* Highlight border color */
+  background-color: #e0f7fa; /* Light cyan background for default address */
+}
+
+.delete-address-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+.address-list-title {
+  font-weight: bold;
+}
+
+.add-address-button {
+  background-color: #1976d2;
+  color: white;
+}
+
+.address-list-container {
+  margin-top: 20px;
+}
+
+.address-cards {
+  margin-top: 20px;
+}
+/* addressList.css */
+.address-card {
+  position: relative;
+  padding: 16px;
+}
+
+.default-address-card {
+  border: 2px solid green;
+}
+
+.set-default-button {
+  margin-top: 10px;
+}

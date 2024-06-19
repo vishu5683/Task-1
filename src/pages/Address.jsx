@@ -1,8 +1,8 @@
-// Address.jsx
+// src/components/Address.jsx
 import React, { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { saveAddress } from '../containers/reducer/cartSlice';
+import { saveAddress } from '../containers/reducer/addressSlice';
 import { notifySuccess } from '../components/Toast';
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 import '../Styles/address.css';
@@ -47,7 +47,7 @@ const Address = () => {
 
   const handleSaveAndProceed = (e) => {
     e.preventDefault();
-    dispatch(saveAddress({ ...address, location: marker }));
+    dispatch(saveAddress({ ...address, id: new Date().getTime(), location: marker }));
     notifySuccess('Address saved successfully');
     navigate('/payment');
   };
@@ -59,15 +59,6 @@ const Address = () => {
   const onMapClick = useCallback((event) => {
     setMarker({ lat: event.latLng.lat(), lng: event.latLng.lng() });
   }, []);
-
-  const savedAddress = {
-    name: 'John Doe',
-    street: '123 Main St',
-    city: 'City',
-    state: 'State',
-    zip: '12345',
-    country: 'Country'
-  };
 
   return (
     <Layoutdesign>
@@ -155,12 +146,6 @@ const Address = () => {
               <button type="submit" className="save-address-button">Save Address and Proceed to Payment</button>
             </form>
             <div className="address-options">
-              <button
-                className="select-address-button"
-                onClick={() => handleSelectAddress(savedAddress)}
-              >
-                Select Saved Address
-              </button>
               <button
                 className="back-to-map-button"
                 onClick={() => setShowMap(true)}

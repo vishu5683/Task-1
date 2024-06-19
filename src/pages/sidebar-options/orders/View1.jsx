@@ -2,9 +2,9 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Layoutdesign from '../../pages/Layout/Layoutdesign';
-import { cancelOrder, updateOrderStatus } from '../../containers/reducer/OrderSilce';
-import '../../Styles/orders.css';
+import Layoutdesign from '../../../pages/Layout/Layoutdesign';
+import { cancelOrder, updateOrderStatus } from '../../../containers/reducer/OrderSilce';
+import '../../../Styles/orders.css';
 
 const ViewOrders = () => {
   const orders = useSelector((state) => state.orders.orders);

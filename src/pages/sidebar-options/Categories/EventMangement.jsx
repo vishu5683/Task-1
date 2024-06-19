@@ -1,6 +1,6 @@
 import React from 'react';
-import Categories from '../../components/Categories';
-import '../../Styles/ProductListing.css'
+import Categories from '../../../components/Categories';
+import '../../../Styles/ProductListing.css'
 
 const EventManagement = () => {
   return (

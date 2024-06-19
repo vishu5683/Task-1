@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { useDispatch} from 'react-redux';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import Pic1 from './assets/pic1.png';
-import './LogUi.css';
-import Toast, { notifySuccess, notifyError } from '../components/Toast';
+import Pic1 from '../assets/pic1.png';
+import '../../Styles/LogUi.css';
+import Toast, { notifySuccess, notifyError } from '../../components/Toast';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
-import { loginSuccess } from '../containers/auth/authSlice';
+import { loginSuccess } from '../../containers/auth/authSlice';
 
 const LoginUi = () => {
   const [showPassword, setShowPassword] = useState(false);

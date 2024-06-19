@@ -11,6 +11,7 @@ import { store, persistor } from './containers/store';
 import Modal from 'react-modal';
 import './firebase/firebase'; 
 
+
 Modal.setAppElement('#root');
 ReactDOM.render(
   <Provider store={store}>

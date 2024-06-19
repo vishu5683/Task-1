@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Layoutdesign from '../Layout/Layoutdesign';
-import { addMoney } from '../../containers/reducer/walletSlice';
-import '../../Styles/wallet.css';
+import Layoutdesign from '../../Layout/Layoutdesign';
+import { addMoney } from '../../../containers/reducer/walletSlice';
+import '../../../Styles/wallet.css';
 
 const Wallet = () => {
     const dispatch = useDispatch();

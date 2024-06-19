@@ -1,9 +1,8 @@
+// src/containers/reducer/cartSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   items: [],
-  address: null,
-  savedAddresses: [], // Add savedAddresses to the initial state
 };
 
 const cartSlice = createSlice({
@@ -36,16 +35,9 @@ const cartSlice = createSlice({
     clearCart: (state) => {
       state.items = [];
     },
-    saveAddress: (state, action) => {
-      state.address = action.payload;
-      state.savedAddresses.push(action.payload); // Push the new address to the savedAddresses array
-    },
-    deleteAddress: (state, action) => {
-      state.savedAddresses = state.savedAddresses.filter(address => address.id !== action.payload);
-    } // Define deleteAddress action
   },
 });
 
-export const { addToCart, incrementQuantity, decrementQuantity, removeItem, clearCart, saveAddress, deleteAddress } = cartSlice.actions;
+export const { addToCart, incrementQuantity, decrementQuantity, removeItem, clearCart } = cartSlice.actions;
 
 export default cartSlice.reducer;
