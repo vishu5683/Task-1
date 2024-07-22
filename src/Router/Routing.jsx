@@ -45,9 +45,9 @@ const Routing = () => {
         <Route path="/category/:category" element={<PrivateRoutes><CategoryDetails /></PrivateRoutes>} />
         <Route path="/test-firebase" element={<PublicRoutes><TestFirebase /></PublicRoutes>} /> 
         <Route path="/edit-product/:id" element={<PrivateRoutes><EditProductPage /></PrivateRoutes>} />
-        <Route path="/cart" element={<PrivateRoutes><Cart /></PrivateRoutes>} /> 
-        <Route path="/address" element={<PrivateRoutes><Address /></PrivateRoutes>} />
-        <Route path="/payment" element={<PrivateRoutes><PaymentPage /></PrivateRoutes>} />
+        <Route path="/products/cart" element={<PrivateRoutes><Cart /></PrivateRoutes>} /> 
+        <Route path="/products/address" element={<PrivateRoutes><Address /></PrivateRoutes>} />
+        <Route path="/products/payment" element={<PrivateRoutes><PaymentPage /></PrivateRoutes>} />
         <Route path="/chatbot" element={<PrivateRoutes><Chatbot /></PrivateRoutes>} />
 
       </Routes>

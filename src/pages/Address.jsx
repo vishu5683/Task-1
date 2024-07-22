@@ -49,7 +49,7 @@ const Address = () => {
     e.preventDefault();
     dispatch(saveAddress({ ...address, id: new Date().getTime(), location: marker }));
     notifySuccess('Address saved successfully');
-    navigate('/payment');
+    navigate('/products/payment');
   };
 
   const handleSelectAddress = (selectedAddress) => {

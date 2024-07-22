@@ -11,7 +11,7 @@ const Cart = () => {
   const navigate = useNavigate();
 
   const handleBuyNow = () => {
-    navigate('/address');
+    navigate('/products/address');
   };
 
   // Calculate total amount

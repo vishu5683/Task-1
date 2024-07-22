@@ -27,7 +27,7 @@ const Header = ({ toggleSidebar }) => {
           </div>
         )}
         <div className="icons-container">
-          <div className="cart-icon-container" onClick={() => navigate('/cart')}>
+          <div className="cart-icon-container" onClick={() => navigate('/products/cart')}>
             <ShoppingCartIcon className="icon" /> 
             {cartItemCount > 0 && <span className="cart-counter">{cartItemCount}</span>}
           </div>

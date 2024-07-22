@@ -6,15 +6,18 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
 
-io.on('connection', socket => {
-  console.log('New client connected');
+// Serve the client (React app) - assuming the build files are in the 'client/build' directory
+app.use(express.static('client/build'));
 
-  socket.on('message', (message) => {
-    io.emit('message', { text: message, from: 'bot' });
-  });
+// Root route
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/client/build/index.html');
+});
 
+io.on('connection', (socket) => {
+  console.log('a user connected');
   socket.on('disconnect', () => {
-    console.log('Client disconnected');
+    console.log('user disconnected');
   });
 });
 

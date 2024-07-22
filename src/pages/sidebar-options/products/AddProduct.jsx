@@ -105,7 +105,7 @@ const AddProduct = () => {
             {errors.thumbnail && <p className="error-message">{errors.thumbnail.message}</p>}
             {preview && (
               <div className="image-preview">
-                <img src={preview} alt="Image Preview" />
+                <img src={preview} alt=" Preview" />
               </div>
             )}
           </div>

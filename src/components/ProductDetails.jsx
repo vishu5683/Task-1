@@ -36,7 +36,7 @@ const ProductDetails = () => {
   }
 
   const handleBuyNow = () => {
-    navigate('/address');
+    navigate('/products/address');
   };
 
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logout } from '../containers/auth/authSlice';
 import { notifySuccess } from '../components/Toast';
@@ -20,7 +20,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
   const location = useLocation();
 
   const isActive = (path) => {
-    return location.pathname === path;
+    return location.pathname.startsWith(path);
   };
 
   const handleNavigation = (path) => {
